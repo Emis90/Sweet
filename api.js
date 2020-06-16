@@ -1,1 +1,0 @@
-export const newsKey = "0efb3fb22ba84aed8861d85d4b46ae51"
