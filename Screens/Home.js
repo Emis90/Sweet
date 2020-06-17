@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { View, Text, Dimensions, TouchableOpacity, ScrollView } from 'react-native'
 const { width, height } = Dimensions.get('window')
 import axios from 'axios'
-import { newsKey } from '../api.js'
+import { newsKey } from '../secret.js'
 import NewsCard from '../Components/NewsCard.js'
 
 const Home = () => {
@@ -10,9 +10,17 @@ const Home = () => {
 
   useEffect(() => {
     (async () => {
+      let timesArticles = []
       let { data } = await axios.get('http://newsapi.org/v2/top-headlines?' + 'country=us&' + `apiKey=${newsKey}`)
-      setNews(data.articles)
+      data.articles.forEach((article) => {
+        if (article.source.name === 'New York Times') {
+          timesArticles.push(article)
+        }
+      })
+
+      setNews(timesArticles)
     })()
+
   }, [])
 
   return (

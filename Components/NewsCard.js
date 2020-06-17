@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TouchableOpacity, Text, TouchableHighlight } from 'react-native'
+import { View, TouchableOpacity, Text } from 'react-native'
 
 const NewsCard = ({ data }) => { //author, content, description, publishedat, source(id, name), title, url, urlToImage
   return (
@@ -19,17 +19,17 @@ const NewsCard = ({ data }) => { //author, content, description, publishedat, so
         alignItems: 'center',
         alignContent: 'center',
       }}>
-        <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'red' }}>{data.source.name}</Text>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'blue' }}>The {data.source.name}</Text>
       </View>
       <View style={{ paddingHorizontal: '6%' }}>
-        <Text style={{ fontSize: 14, fontWeight: 'bold', color: 'orange' }}>{data.title}</Text>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: 'blue' }}>{data.title}</Text>
         <View>
           {data.content ?
             <Text style={{ fontSize: 14, textAlign: 'justify' }}>{data.content}</Text>
             :
-            <TouchableHighlight>
+            <TouchableOpacity>
               <Text style={{ fontSize: 14, color: 'blue' }}>{data.url}</Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
           }
         </View>
       </View>
