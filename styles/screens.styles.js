@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { UrlTile } from 'react-native-maps';
 
 const { width, height } = Dimensions.get('window');
 
@@ -11,6 +12,15 @@ export default StyleSheet.create({
     backgroundColor: "#ffffb3",
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  containerHome: {
+    display: 'flex',
+    height,
+    width,
+    flexDirection: 'column',
+    backgroundColor: "#ffffb3",
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   text: {
     color: 'white',
@@ -47,17 +57,9 @@ export default StyleSheet.create({
   buttonText: {
     textAlign: "center",
     color: 'white',
-    marginTop: 20,
+    marginTop: 18,
     paddingVertical: 5,
     fontSize: 20,
-  },
-  newsContainer: {
-    height,
-    paddingTop: '25%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    backgroundColor: 'grey'
   },
   welcomeContainer: {
     height,
@@ -76,6 +78,29 @@ export default StyleSheet.create({
     paddingHorizontal: 20
   },
   homeHeader: {
-    height: height * .3
-  }
+    height: height * .35,
+    width,
+    marginTop: 5,
+    backgroundColor: 'white'
+  },
+  newsContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: '#ffffb3',
+    height,
+  },
+  logout: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: 200,
+    height: 50,
+    backgroundColor: "#ff99dd",
+    color: "white",
+    paddingHorizontal: 2,
+    marginBottom: 100,
+    borderRadius: 5
+  },
 })
+

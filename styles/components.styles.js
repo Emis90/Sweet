@@ -8,11 +8,16 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignContent: 'center',
     justifyContent: 'space-between',
-    margin: '1%',
+    margin: 2,
     borderWidth: 1,
-    borderColor: 'pink'
+    borderColor: 'black',
+    padding: 5,
+    backgroundColor: '#DCDCDC',
+    borderRadius: 5
   },
   cardTitle: {
+    display: 'flex',
+    flexDirection: 'column',
     paddingHorizontal: '5%',
     alignItems: 'center',
     alignContent: 'center',
@@ -20,12 +25,10 @@ export default StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'blue'
   },
-  cardSubTitle: {
+  subCardTitle: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: 'blue'
   }
 
 })

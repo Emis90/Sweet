@@ -33,7 +33,6 @@ const Login = ({ navigation }) => {
       })
       .catch(err => console.log(err))
   };
-
   const logIn = async (email, password) => {
     await firebase
       .auth()
@@ -43,6 +42,7 @@ const Login = ({ navigation }) => {
         navigation.navigate({ name: "Home" })
       })
       .catch(err => alert('Wrong credentials, or user does not exist! Try again'))
+
   };
 
   // const changeText = (e) => {
