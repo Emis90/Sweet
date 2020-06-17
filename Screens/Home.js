@@ -1,45 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Dimensions, TouchableOpacity, ScrollView } from 'react-native'
-const { width, height } = Dimensions.get('window')
-import axios from 'axios'
-import { newsKey } from '../secret.js'
-import NewsCard from '../Components/NewsCard.js'
+import * as SecureStore from 'expo-secure-store'
+import styles from '../styles/screens.styles'
 
-const Home = () => {
-  const [newsToday, setNews] = useState([])
-
-  useEffect(() => {
-    (async () => {
-      let timesArticles = []
-      let { data } = await axios.get('http://newsapi.org/v2/top-headlines?' + 'country=us&' + `apiKey=${newsKey}`)
-      data.articles.forEach((article) => {
-        if (article.source.name === 'New York Times') {
-          timesArticles.push(article)
-        }
-      })
-
-      setNews(timesArticles)
-    })()
-
-  }, [])
-
+const Home = ({ navigation }) => {
+  const logMeOut = async () => {
+    await SecureStore.deleteItemAsync('user')
+    navigation.navigate('Welcome')
+  }
   return (
-    <View style={{
-      height,
-      paddingTop: '25%',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      backgroundColor: 'lightGrey'
-    }}>
-      <Text style={{ fontSize: 18, fontWeight: 'bold', padding: '1%', marginBottom: 10 }}>
-        Welcome to your Home page:
-    </Text>
-      <ScrollView style={{ paddingHorizontal: '3%' }}>
-        {newsToday.length > 0 && newsToday.length > 0 ? newsToday.map((eachNews, id) => {
-          return <NewsCard data={eachNews} key={eachNews.title} />
-        }) : <Text>No data returned</Text>}
-      </ScrollView >
+    <View style={styles.container}>
+      <View style={styles.homeHeader}>
+        <Text style={styles.text}>Home</Text>
+      </View>
+      <View>
+        <TouchableOpacity
+          style={styles.input}
+          onPress={() => logMeOut()}>
+          <Text style={styles.buttonText}>Log out</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
