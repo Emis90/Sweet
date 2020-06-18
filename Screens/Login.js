@@ -2,17 +2,13 @@ import React, { useState, useEffect } from 'react';
 import {
   Text,
   View,
-  StyleSheet,
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
-  StatusBar,
-  Dimensions
 } from 'react-native'
 import styles from '../styles/screens.styles'
 import { FirebaseWrapper } from "../firebase/firebase";
 import { firebaseConfig } from "../firebase/config";
-import * as SecureStore from 'expo-secure-store'
 import * as firebase from 'firebase'
 
 const Login = ({ navigation }) => {
@@ -23,37 +19,33 @@ const Login = ({ navigation }) => {
     FirebaseWrapper.GetInstance().Initialize(firebaseConfig);
   }, [])
   const create = async (email, password) => {
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(async (res) => {
-        console.log('user created!', res.user.apiKey);
-        await SecureStore.setItemAsync('user', res.user.email)
-        navigation.navigate({ name: "Home" })
-      })
-      .catch(err => console.log(err))
+    try {
+      await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => console.log('user created!'));
+      navigation.navigate({ name: "Home" })
+    } catch (error) {
+      alert('Could not create: user already exists, try sining in instead ', error)
+    }
   };
   const logIn = async (email, password) => {
-    await firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(async () => {
-        await SecureStore.setItemAsync('user', 'logged')
-        navigation.navigate({ name: "Home" })
-      })
-      .catch(err => alert('Wrong credentials, or user does not exist! Try again'))
+    try {
+      await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => console.log('user logged in!'));
+      navigation.navigate({ name: "Home" })
+    } catch (error) {
+      alert('Could not login: wrong credentials, try again', error)
+    }
 
   };
-
-  // const changeText = (e) => {
-  //   // setCredentials({ ...credentials, [e.target.name]: e.target.value })
-  //   console.log('credentials ', e)
-  // }
 
   return (
     <KeyboardAvoidingView>
       <View style={styles.container}>
-        <Text style={styles.intro}>Login or Sign up to discover places</Text>
+        <Text style={styles.intro}>Login / Sign</Text>
         <TextInput
           style={styles.input}
           placeholder="email"
@@ -84,6 +76,7 @@ const Login = ({ navigation }) => {
             logIn(credentials.email, credentials.password)
           }}>Sign In</Text>
         </TouchableOpacity>
+        <Text style={{ color: 'grey', fontWeight: 'bold', paddingBottom: 7 }}>OR</Text>
         <TouchableOpacity style={styles.input}>
           <Text style={styles.buttonText} onPress={() => {
             create(credentials.email, credentials.password)

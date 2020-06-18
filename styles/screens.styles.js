@@ -9,7 +9,7 @@ export default StyleSheet.create({
     height,
     width,
     flexDirection: 'column',
-    backgroundColor: "#ffffb3",
+    backgroundColor: "#98FB98",
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -18,7 +18,7 @@ export default StyleSheet.create({
     height,
     width,
     flexDirection: 'column',
-    backgroundColor: "#ffffb3",
+    backgroundColor: "#87CEFA",//blue
     alignItems: 'center',
     justifyContent: 'space-between'
   },
@@ -37,7 +37,9 @@ export default StyleSheet.create({
     color: "white",
     paddingHorizontal: 2,
     fontSize: 20,
-    borderRadius: 5
+    borderRadius: 5,
+    borderWidth: 3,
+    borderColor: 'white'
   },
   buttonContainer: {
     width: 200,
@@ -47,7 +49,7 @@ export default StyleSheet.create({
   },
   intro: {
     fontSize: 20,
-    color: "#ff99dd",
+    color: "grey",
     fontWeight: 'bold',
     paddingVertical: 10,
     paddingHorizontal: 30,
@@ -68,7 +70,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#ffffb3',
+    backgroundColor: '#FCFC85',
     paddingTop: '20%',
     paddingBottom: '10%'
   },
@@ -80,15 +82,17 @@ export default StyleSheet.create({
   homeHeader: {
     height: height * .35,
     width,
-    marginTop: 5,
+    paddingTop: 5,
     backgroundColor: 'white'
   },
   newsContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#ffffb3',
+    backgroundColor: '#ff99dd',
     height,
+    paddingTop: 50,
+    paddingBottom: 70
   },
   logout: {
     display: 'flex',
@@ -100,7 +104,9 @@ export default StyleSheet.create({
     color: "white",
     paddingHorizontal: 2,
     marginBottom: 100,
-    borderRadius: 5
+    borderRadius: 5,
+    borderWidth: 3,
+    borderColor: 'white'
   },
 })
 

@@ -1,20 +1,22 @@
 import React from 'react'
-import { View, TouchableOpacity, Text, Linking } from 'react-native'
+import { View, TouchableOpacity, Text, Linking, Image } from 'react-native'
 import styles from '../styles/components.styles'
 const NewsCard = ({ data }) => { //author, content, description, publishedat, source(id, name), title, url, urlToImage
   return (
     <View style={styles.cardContainer}>
-      <TouchableOpacity onPress={() => Linking.openURL(data.url)}>
-        <View style={styles.cardTitle}>
-          <Text style={styles.title}>The {data.source.name}</Text>
-        </View>
-        <View style={{ display: 'flex', flexDirection: 'column', paddingHorizontal: '6%', justifyContent: 'center' }}>
-          <Text style={styles.subCardTitle}>{data.title}</Text>
-          <View>
-            <Text style={{ fontSize: 14, textAlign: 'justify' }}>{data.content}</Text>
-          </View>
-        </View>
+      <View style={styles.cardTitle}>
+        <Text style={styles.title}>The {data.name}</Text>
+      </View>
+
+      <TouchableOpacity style={{ alignItems: 'center' }}
+        onPress={() => Linking.openURL(data.url)}>
+        <Image source={{ uri: data.imageUrl }} style={styles.image} />
       </TouchableOpacity>
+
+      <View style={styles.labels}>
+        <Text style={{ paddingHorizontal: 1, color: 'green', fontWeight: 'bold' }}>{data.labels.join().split(' * ')}</Text>
+      </View>
+
     </View >
   )
 }

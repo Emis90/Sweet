@@ -5,14 +5,12 @@ export default StyleSheet.create({
   cardContainer: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    alignContent: 'center',
-    justifyContent: 'space-between',
     margin: 2,
-    borderWidth: 1,
-    borderColor: 'black',
-    padding: 5,
-    backgroundColor: '#DCDCDC',
+    borderWidth: 2,
+    borderColor: 'grey',
+    paddingHorizontal: 5,
+    paddingVertical: 10,
+    backgroundColor: '#E6E6FA',
     borderRadius: 5
   },
   cardTitle: {
@@ -21,14 +19,27 @@ export default StyleSheet.create({
     paddingHorizontal: '5%',
     alignItems: 'center',
     alignContent: 'center',
+    color: 'orange'
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
   },
-  subCardTitle: {
-    fontSize: 14,
+  labels: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    justifyContent: 'space-around',
     fontWeight: 'bold',
+    paddingHorizontal: 4
+  },
+  image: {
+    height: 180,
+    width: 300,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: 'grey'
   }
 
 })

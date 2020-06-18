@@ -15,3 +15,4 @@ firebase/firebase.js
 # macOS
 .DS_Store
 firebase/config.js
+locations.js

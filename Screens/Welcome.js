@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, Dimensions, TouchableOpacity } from 'react-native'
-import styles from '../styles/screens.styles'
+import React from 'react'
+import { View, Text, Dimensions, TouchableOpacity, ImageBackground } from 'react-native'
 
+const { width, height } = Dimensions.get('window')
 const Welcome = ({ navigation }) => {
   return (
-    <View
-      style={styles.welcomeContainer}>
-      <Text style={styles.welcomeTxt}>
-        Welcome to Goodie
-      </Text>
-      <Text style={styles.welcomeTxt}>
-        The app that allows you to esplore the best sweet spots in NYC
-      </Text>
-      <TouchableOpacity onPress={() => { navigation.navigate({ name: "Login" }) }
-      }>
-        <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-          NEXT
+    <View>
+      <ImageBackground source={require('../assets/donuts.png')} style={{ height, width }}>
+        <View style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height, justifyContent: 'space-between', paddingTop: 60 }}>
+          <Text style={{ fontSize: 40, color: 'white', fontWeight: '700' }}>GOODIE</Text>
+          <TouchableOpacity
+            style={{ height: 200, marginVertical: 50 }}
+            onPress={() => { navigation.navigate({ name: "Login" }) }
+            }>
+            <Text style={{ fontSize: 25, fontWeight: 'bold', color: 'white' }}>
+              NEXT
         </Text>
-      </TouchableOpacity>
-    </View>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+    </View >
   )
 }
 

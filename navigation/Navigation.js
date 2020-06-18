@@ -11,20 +11,7 @@ import List from '../Screens/List'
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 import TabIcons from '../Components/TabIcons'
-import * as SecureStore from 'expo-secure-store'
 const Root = () => {
-  const [open, setOpen] = useState(false)
-  console.log('effect running ')
-  useEffect(() => {
-    (async () => {
-      let user = await SecureStore.getItemAsync('user')
-      if (user) {
-        setOpen(true)
-      } else {
-        setOpen(false)
-      }
-    })()
-  })
   const TabNavigator = () => {
     return (
       <Tab.Navigator headerMode="none">
@@ -34,16 +21,16 @@ const Root = () => {
           component={Home}
           options={{
             tabBarIcon: ({ }) => (
-              <TabIcons color="orange" name={Platform.OS === 'ios' ? 'ios-sunny' : 'md-home'} />
+              <TabIcons color="#FFD700" name={Platform.OS === 'ios' ? 'ios-sunny' : 'md-home'} />
             ),
           }}
         />
         <Tab.Screen
-          name="News"
+          name="Recipes"
           component={NewsScreen}
           options={{
             tabBarIcon: ({ }) => (
-              <TabIcons color="#6495ED" name={Platform.OS === 'ios' ? 'ios-book' : 'md-book'} />
+              <TabIcons color="#9370DB" name={Platform.OS === 'ios' ? 'ios-book' : 'md-book'} />
             ),
           }} />
         <Tab.Screen
@@ -51,7 +38,7 @@ const Root = () => {
           component={MyMap}
           options={{
             tabBarIcon: ({ }) => (
-              <TabIcons color="#6B8E23" name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'} />
+              <TabIcons color="#00FF00" name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'} />
             ),
           }} />
         <Tab.Screen
@@ -67,7 +54,7 @@ const Root = () => {
   }
 
   return (
-    <Stack.Navigator initialRouteName={open && open ? "Home" : "Welcome"} headerMode="none">
+    <Stack.Navigator initialRouteName="Welcome" headerMode="none">
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Home" component={TabNavigator} />
       <Stack.Screen name="Login" component={Login} />
