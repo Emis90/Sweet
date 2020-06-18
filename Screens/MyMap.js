@@ -1,9 +1,7 @@
 // import Constants from 'expo-constants';
 import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import axios from 'axios';
-import { yelpKey } from '../secret';
+import { View, Text } from 'react-native';
+import MapView, { Marker, Callout } from 'react-native-maps';
 import { bakeries } from '../locations';
 // import { mapApi } from '../secrets'
 
@@ -36,7 +34,11 @@ const MyMap = () => {
                 longitude: onebiz.coordinates.longitude,
               }}
               pinColor="pink"
-            />
+            >
+              <Callout>
+                <Text style={{ fontSize: 16 }}>{onebiz.name}</Text>
+              </Callout>
+            </Marker>
           })
             : null
         }
