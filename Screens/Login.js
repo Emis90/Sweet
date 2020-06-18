@@ -7,23 +7,17 @@ import {
   KeyboardAvoidingView,
 } from 'react-native'
 import styles from '../styles/screens.styles'
-import { FirebaseWrapper } from "../firebase/firebase";
-import { firebaseConfig } from "../firebase/config";
 import * as firebase from 'firebase'
 
 const Login = ({ navigation }) => {
-  const [user, setUpUser] = useState(null)
   const [credentials, setCredentials] = useState({ email: 'eni@gmail.com', password: '12345678' })
 
-  useEffect(() => {
-    FirebaseWrapper.GetInstance().Initialize(firebaseConfig);
-  }, [])
   const create = async (email, password) => {
     try {
       await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
-        .then(() => console.log('user created!'));
+        .then((res) => console.log('user created!'));
       navigation.navigate({ name: "Home" })
     } catch (error) {
       alert('Could not create: user already exists, try sining in instead ', error)
@@ -34,7 +28,7 @@ const Login = ({ navigation }) => {
       await firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then(() => console.log('user logged in!'));
+        .then((res) => console.log('user logged in!'));
       navigation.navigate({ name: "Home" })
     } catch (error) {
       alert('Could not login: wrong credentials, try again', error)

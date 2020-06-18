@@ -11,7 +11,6 @@ npm-debug.*
 web-build/
 web-report/
 secret.js
-firebase/firebase.js
 # macOS
 .DS_Store
 firebase/config.js

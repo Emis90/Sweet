@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Dimensions, TouchableOpacity, Image } from 'react-native'
-import * as SecureStore from 'expo-secure-store'
+// import * as myFirebase from 'firebase'
 import * as firebase from 'firebase'
 import styles from '../styles/screens.styles'
 
 const Home = ({ navigation }) => {
   const signOutUser = async () => {
-    await firebase
-      .auth()
-      .signOut()
-      .then(async () => {
-        await SecureStore.deleteItemAsync('user')
-        navigation.navigate({ name: "Login" })
-      })
-      .catch((error) => {
-        console.log("dit NOT sign out >> ", error)
-      })
+    try {
+      await firebase
+        .auth()
+        .signOut()
+      navigation.navigate({ name: "Login" })
+    } catch (error) {
+      console.log('could not sign out')
+    }
   }
   return (
     <View style={styles.containerHome}>
@@ -28,7 +26,7 @@ const Home = ({ navigation }) => {
         <TouchableOpacity
           style={styles.logout}
           onPress={() => signOutUser()}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'white', alignSelf: 'center' }}>Log out</Text>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'white', alignSelf: 'center' }}>Sign out</Text>
         </TouchableOpacity>
       </View>
     </View>

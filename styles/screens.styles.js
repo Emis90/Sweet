@@ -62,6 +62,7 @@ export default StyleSheet.create({
     marginTop: 18,
     paddingVertical: 5,
     fontSize: 20,
+    fontWeight: 'bold'
   },
   welcomeContainer: {
     height,

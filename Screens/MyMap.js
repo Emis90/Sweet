@@ -1,15 +1,26 @@
 // import Constants from 'expo-constants';
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { bakeries } from '../locations';
-// import { mapApi } from '../secrets'
+import * as firebase from '../firebase/firebase'
+import * as authFirebase from 'firebase'
 
 const MyMap = () => {
   const [businesses, setBusinesses] = useState([])
   useEffect(() => {
     setBusinesses(bakeries)
   }, [])
+
+  const addToList = async (name) => {
+
+    try {
+      let user = await authFirebase.auth().currentUser
+      await firebase.FirebaseWrapper.GetInstance().CreateNewDocument("savedPlaces", { place: name }, user.uid)
+    } catch (error) {
+      console.log('something went wrong posting >>', error)
+    }
+  }
   return (
     <View style={{ justifyContent: 'flex-start', backgroundColo: '#87CEFA', height: '100%' }}>
       <MapView
@@ -21,8 +32,7 @@ const MyMap = () => {
           longitudeDelta: 0.2,
           showsUserLocation: true,
           showsCompass: true,
-          zoomControlEnabled: true,
-
+          zoomControlEnabled: true
         }}
       >
         {
@@ -35,8 +45,13 @@ const MyMap = () => {
               }}
               pinColor="pink"
             >
-              <Callout>
+              <Callout style={{ alignItems: 'center' }} onPress={() => addToList(onebiz.name)}>
                 <Text style={{ fontSize: 16 }}>{onebiz.name}</Text>
+                <TouchableOpacity
+                  style={{ flexDirection: 'row' }}>
+                  <Image source={require('../assets/heart.png')} style={{ height: 20, width: 20 }} />
+                  <Text style={{ color: 'red' }}>++</Text>
+                </TouchableOpacity>
               </Callout>
             </Marker>
           })

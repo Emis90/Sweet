@@ -5,6 +5,8 @@ import axios from 'axios'
 import NewsCard from '../Components/NewsCard.js'
 import styles from '../styles/screens.styles'
 import { dessertId, dessertKey } from '../secret'
+
+
 const NewsScreen = () => {
   const [newsToday, setNews] = useState([])
   useEffect(() => {
@@ -24,7 +26,6 @@ const NewsScreen = () => {
     })()
 
   }, [])
-  console.log(newsToday)
   return (
     <View style={styles.newsContainer}>
       <Text style={{ fontSize: 24, fontWeight: 'bold', padding: '1%', marginBottom: 10 }}>

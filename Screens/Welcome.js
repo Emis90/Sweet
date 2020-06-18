@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, Dimensions, TouchableOpacity, ImageBackground } from 'react-native'
-
+import * as firebase from '../firebase/firebase'
+import { firebaseConfig } from "../firebase/config";
 const { width, height } = Dimensions.get('window')
+
+
 const Welcome = ({ navigation }) => {
+  useEffect(() => {
+    firebase.FirebaseWrapper.GetInstance().Initialize(firebaseConfig);
+  }, [])
   return (
     <View>
       <ImageBackground source={require('../assets/donuts.png')} style={{ height, width }}>

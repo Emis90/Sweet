@@ -17,11 +17,10 @@ const Root = () => {
       <Tab.Navigator headerMode="none">
         <Tab.Screen
           name="Home"
-          color="orange"
           component={Home}
           options={{
             tabBarIcon: ({ }) => (
-              <TabIcons color="#FFD700" name={Platform.OS === 'ios' ? 'ios-sunny' : 'md-home'} />
+              <TabIcons color="#00cc66" name={Platform.OS === 'ios' ? 'ios-home' : 'md-home'} />
             ),
           }}
         />
@@ -30,7 +29,7 @@ const Root = () => {
           component={NewsScreen}
           options={{
             tabBarIcon: ({ }) => (
-              <TabIcons color="#9370DB" name={Platform.OS === 'ios' ? 'ios-book' : 'md-book'} />
+              <TabIcons color="#ff9933" name={Platform.OS === 'ios' ? 'ios-book' : 'md-book'} />
             ),
           }} />
         <Tab.Screen
@@ -38,17 +37,17 @@ const Root = () => {
           component={MyMap}
           options={{
             tabBarIcon: ({ }) => (
-              <TabIcons color="#00FF00" name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'} />
+              <TabIcons color="gold" name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'} />
             ),
           }} />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="List"
           component={List}
           options={{
             tabBarIcon: ({ }) => (
-              <TabIcons color="#FF69B4" name={Platform.OS === 'ios' ? 'ios-ice-cream' : 'md-ice-cream'} />
+              <TabIcons color="#ff99cc" name={Platform.OS === 'ios' ? 'ios-ice-cream' : 'md-ice-cream'} />
             ),
-          }} />
+          }} /> */}
       </Tab.Navigator>
     )
   }
