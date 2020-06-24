@@ -10,14 +10,14 @@ import styles from '../styles/screens.styles'
 import * as firebase from 'firebase'
 
 const Login = ({ navigation }) => {
-  const [credentials, setCredentials] = useState({ email: 'eni@gmail.com', password: '12345678' })
+  const [credentials, setCredentials] = useState({ email: '', password: '' })
 
   const create = async (email, password) => {
     try {
       await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
-        .then((res) => console.log('user created!'));
+        .then(() => console.log('user created!'));
       navigation.navigate({ name: "Home" })
     } catch (error) {
       alert('Could not create: user already exists, try sining in instead ', error)
@@ -28,7 +28,7 @@ const Login = ({ navigation }) => {
       await firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then((res) => console.log('user logged in!'));
+        .then(() => console.log('user logged in!'));
       navigation.navigate({ name: "Home" })
     } catch (error) {
       alert('Could not login: wrong credentials, try again', error)

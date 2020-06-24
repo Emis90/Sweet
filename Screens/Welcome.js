@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { View, Text, Dimensions, TouchableOpacity, ImageBackground } from 'react-native'
 import * as firebase from '../firebase/firebase'
-import { firebaseConfig } from "../firebase/config";
+import { config } from "../firebase/config";
 const { width, height } = Dimensions.get('window')
 
 
 const Welcome = ({ navigation }) => {
   useEffect(() => {
-    firebase.FirebaseWrapper.GetInstance().Initialize(firebaseConfig);
+    firebase.FirebaseWrapper.GetInstance().Initialize(config);
   }, [])
   return (
     <View>

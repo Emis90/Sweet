@@ -20,7 +20,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: "#87CEFA",//blue
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'center'
   },
   text: {
     color: 'white',
@@ -101,13 +101,30 @@ export default StyleSheet.create({
     justifyContent: 'center',
     width: 200,
     height: 50,
-    backgroundColor: "#ff99dd",
+    backgroundColor: "#87CEFA",
     color: "white",
     paddingHorizontal: 2,
     marginBottom: 100,
     borderRadius: 5,
     borderWidth: 3,
     borderColor: 'white'
+
   },
+  weather: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: 250,
+    height: 'auto',
+    backgroundColor: "#87CEFA",
+    color: "white",
+    paddingHorizontal: 5,
+    marginBottom: 100,
+    borderRadius: 5,
+    borderWidth: 5,
+    paddingVertical: 25,
+    borderColor: 'white'
+  }
 })
 

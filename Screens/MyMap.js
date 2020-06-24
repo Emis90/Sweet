@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { bakeries } from '../locations';
+import { config } from '../firebase/config'
 import * as firebase from '../firebase/firebase'
 import * as authFirebase from 'firebase'
 
@@ -13,10 +14,10 @@ const MyMap = () => {
   }, [])
 
   const addToList = async (name) => {
-
     try {
       let user = await authFirebase.auth().currentUser
-      await firebase.FirebaseWrapper.GetInstance().CreateNewDocument("savedPlaces", { place: name }, user.uid)
+      let res = await firebase.FirebaseWrapper.GetInstance().getAllPlaces()
+      console.log(res)
     } catch (error) {
       console.log('something went wrong posting >>', error)
     }
